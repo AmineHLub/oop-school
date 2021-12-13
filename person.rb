@@ -11,13 +11,14 @@ module Person
     end
 
     def can_use_services?
-      is_of_age? || @parent_permission
+      isof_age? || 'they have permission from parents'
     end
 
     private
 
     def isof_age?
-      true if @age >= 18
+      return true unless @age <= 18
+
       false
     end
   end
