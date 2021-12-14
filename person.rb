@@ -1,6 +1,6 @@
 class Person
   attr_reader :id
-  attr_accessor :name, :age
+  attr_accessor :age, :name, :parent_permission
 
   def initialize(age, name = 'Unknown', parent_permission: true)
     @id = rand(1...1000)
@@ -10,17 +10,12 @@ class Person
   end
 
   def can_use_services?
-    isof_age? || "#{@parent_permission}, He has parental permission"
+    of_age? || @parent_permission
   end
 
   private
 
-  def isof_age?
-    @age > 18
+  def of_age?
+    @age >= 18
   end
 end
-
-mido = Person.new(17, 'mido', parent_permission: false)
-puts(mido.name)
-puts(mido.age)
-puts(mido.can_use_services?)
