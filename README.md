@@ -1,65 +1,35 @@
-![](https://img.shields.io/badge/Microverse-blueviolet)
+# OOP SCHOOL
 
-# Project Name
+Imagine that you are the librarian of OOP University, and you need a tool to record what books are in the library and who borrows them. The app that you will create will allow a you to:
 
-> One paragraph statement about the project.
-
-![screenshot](./app_screenshot.png)
-
-Additional description about the project and its features.
+Add new students or teachers.
+Add new books.
+Save records of who borrowed a given book and when.
+And all of this will be built in a beautiful and well-organized way!
 
 ## Built With
 
-- Major languages
-- Frameworks
-- Technologies used
-
-## Live Demo
-
-[Live Demo Link](https://livedemo.com)
-
+- Ruby
 
 ## Getting Started
 
-**This is an example of how you may give instructions on setting up your project locally.**
-**Modify this file to match your project, remove sections that don't apply. For example: delete the testing section if the currect project doesn't require testing.**
-
-
-To get a local copy up and running follow these simple example steps.
-
-### Prerequisites
-
-### Setup
-
-### Install
-
-### Usage
-
-### Run tests
-
-### Deployment
-
-
+- clone git@github.com:AmineHLub/oop-school.git
+- cd oop-school
 
 ## Authors
 
-👤 **Author1**
+👤 **Mohamed Amine Hajltaief**
 
-- GitHub: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- LinkedIn: [LinkedIn](https://linkedin.com/in/linkedinhandle)
+- GitHub: [@AmineHLub](https://github.com/AmineHLub)
+- Twitter: [@Amino47612441](https://twitter.com/Amino47612441)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/mohamed-amine-hajltaief-b18863163/)
 
-👤 **Author2**
-
-- GitHub: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- LinkedIn: [LinkedIn](https://linkedin.com/in/linkedinhandle)
 
 ## 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [issues page](../../issues/).
+Feel free to check the [issues page](../../issues).
 
 ## Show your support
 
@@ -67,9 +37,8 @@ Give a ⭐️ if you like this project!
 
 ## Acknowledgments
 
-- Hat tip to anyone whose code was used
-- Inspiration
-- etc
+- A special thanks to Microverse for inspiring this project. We are indebted to you all at Microverse
+- A special thanks goes to all our peers at Microverse for being there for us.
 
 ## 📝 License
 
