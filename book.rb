@@ -2,12 +2,12 @@ require_relative './rental'
 
 class Book
   attr_accessor :title, :author
-  attr_reader :renters
+  attr_reader :rentals
 
   def initialize(title, author)
     @title = title
     @author = author
-    @renters = []
+    @rentals = []
   end
 
   def add_rental(person, date)

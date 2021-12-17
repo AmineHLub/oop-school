@@ -6,13 +6,12 @@ class Student < Person
     super(age, name, parent_permission)
     @classroom = classroom
     @name = name
+    classroom.students << @name if classroom.students&.exclude?(@name)
   end
 
   def play_hooky
     "¯\(ツ)/¯"
   end
-
-  classroom.students << @name if classroom.students&.exclude?(@name)
 
   def classroom_setter(newclass)
     @classroom = newclass.lable
