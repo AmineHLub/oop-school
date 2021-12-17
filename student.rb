@@ -1,20 +1,19 @@
-require_relative './Classroom'
-class Student < Person
-  attr_accessor :classroom
+require './person'
 
-  def initialize(classroom, age, name = 'Unknown', parent_permission: true)
+class Student < Person
+  attr_reader :classroom
+
+  def initialize(classroom, age, name = 'Unknown', parent_permission = DEFAULT_PERM)
     super(age, name, parent_permission)
     @classroom = classroom
-    @name = name
-    classroom.students << @name if classroom.students&.exclude?(@name)
   end
 
   def play_hooky
     "¯\(ツ)/¯"
   end
 
-  def classroom_setter(newclass)
-    @classroom = newclass.lable
-    classroom.students << @name
+  def classroom=(classroom)
+    @classroom = classroom
+    classroom.students.push(self) unless classroom.students.include?(self)
   end
 end

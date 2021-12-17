@@ -1,10 +1,10 @@
 require_relative './corrector'
-require_relative './rental'
 class Person
   attr_reader :id, :rentals
-  attr_accessor :age, :name, :parent_permission
+  attr_accessor :age, :name
 
-  def initialize(age, name = 'Unknown', parent_permission: true)
+  DEFAULT_PERM = true
+  def initialize(age, name = 'Unknown', parent_permission = DEFAULT_PERM)
     @id = rand(1...1000)
     @name = name
     @age = age
@@ -21,13 +21,13 @@ class Person
     of_age? || @parent_permission
   end
 
-  def add_rental(book, date)
-    Rental.new(book, @name, date)
-  end
-
   private
 
   def of_age?
     @age >= 18
+  end
+
+  def add_rental(rental)
+    @rentals << rental
   end
 end
