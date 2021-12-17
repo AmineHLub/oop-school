@@ -1,6 +1,7 @@
 require_relative './corrector'
+require_relative './rental'
 class Person
-  attr_reader :id
+  attr_reader :id, :books
   attr_accessor :age, :name, :parent_permission
 
   def initialize(age, name = 'Unknown', parent_permission: true)
@@ -9,6 +10,7 @@ class Person
     @age = age
     @parent_permission = parent_permission
     @corrector = Corrector.new
+    @books = []
   end
 
   def validate_name
@@ -17,6 +19,10 @@ class Person
 
   def can_use_services?
     of_age? || @parent_permission
+  end
+
+  def add_rental(book, date)
+    Rental.new(book, @name, date)
   end
 
   private
