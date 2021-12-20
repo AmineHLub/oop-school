@@ -48,6 +48,12 @@ class App
     end
   end
 
+  def listing(array)
+    array.each do |element|
+      puts("#{array.find_index(element)}) #{element[:display]}")
+    end
+  end
+
   def list_books
     if @all_books.length.positive?
       @all_books.each do |book|
