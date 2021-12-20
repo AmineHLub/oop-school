@@ -56,8 +56,7 @@ class App
 
   def list_books
     if @all_books.length.positive?
-      @all_books.each do |book|
-        puts("#{@all_books.find_index(book)}) #{book[:display]}")
+      listing(@all_books)
       end
     else
       puts 'No books added yet!'
@@ -67,9 +66,7 @@ class App
 
   def list_people
     if @everyone.length.positive?
-      @everyone.each do |person|
-        puts("#{@everyone.find_index(person)}) #{person[:display]}")
-      end
+      listing(@everyone)  
     else
       puts 'No people added yet!'
     end
@@ -143,10 +140,10 @@ class App
 
   def create_rental
     if @all_books.length.positive? && @everyone.length.positive?
-      @all_books.each { |book| puts("#{@all_books.find_index(book)}) #{book[:display]}") }
+      listing(@all_books)
       puts('Select a book from the following list')
       selected_book = gets.chomp.to_i
-      @everyone.each { |person| puts("#{@everyone.find_index(person)}) #{person[:display]}") }
+      listing(@everyone)
       puts('Select a book from the following list (not using their id)')
       selected_person = gets.chomp.to_i
       puts('Date')
