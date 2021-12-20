@@ -1,5 +1,6 @@
 class App
-  attr_accessor :@everyone, :@all_books, :@all_rentals
+  attr_accessor :everyone, :all_books, :all_rentals
+
   def initialize(everyone = [], all_books = [], all_rentals = [])
     @everyone = everyone
     @all_books = all_books
@@ -23,17 +24,23 @@ class App
   def choice(selected)
     case selected
     when 1
-      List_books.new(@all_books)
+      ListBooks.new(@all_books).list_books
+      menu
     when 2
-      List_people.new(@everyone)
+      ListPeople.new(@everyone).list_people
+      menu
     when 3
-      Create_person.new(@everyone)
+      CreatePeople.new(@everyone).create_person
+      menu
     when 4
-      Create_book.new(@all_books)
+      CreateBook.new(@all_books).create_book
+      menu
     when 5
-      Create_rental.new(@everyone,@all_books)
+      CreateRental.new(@everyone, @all_books, @all_rentals, self).create_rental
+      menu
     when 6
-      List_rental.new(@everyone,@all_books)
+      ListRental.new(@everyone, @all_books, @all_rentals).list_rental
+      menu
     else
       puts('Thanks for using the app!')
       exit
@@ -41,49 +48,46 @@ class App
   end
 end
 
-  
+def listing(array)
+  array.each do |element|
+    puts("#{array.find_index(element)}) #{element[:display]}")
+  end
+end
 
-  def listing(array)
-    array.each do |element|
-      puts("#{array.find_index(element)}) #{element[:display]}")
-    end
+class ListBooks
+  def initialize(all_books)
+    @all_books = all_books
   end
 
-  class List_books
-    def initialize(all_books)
-    @all_books = all_books
-    end
-  def listing_books
+  def list_books
     if @all_books.length.positive?
       listing(@all_books)
     else
       puts 'No books added yet!'
     end
-    start.menu
-    end
   end
+end
 
-  class List_people
-    def initialize(everyone)
+class ListPeople
+  def initialize(everyone)
     @everyone = everyone
-    end
-
-    def listing_people
-      if @everyone.length.positive?
-        listing(@everyone)
-      else
-        puts 'No people added yet!'
-      end
-      start.menu
-    end
   end
 
-  class Create_book
-    def initialize(all_books)
-      @all_books = all_books
+  def list_people
+    if @everyone.length.positive?
+      listing(@everyone)
+    else
+      puts 'No people added yet!'
     end
+  end
+end
 
-  def creating_book
+class CreateBook
+  def initialize(all_books)
+    @all_books = all_books
+  end
+
+  def create_book
     print('Title: ')
     title = gets.chomp
     print('Author: ')
@@ -94,17 +98,15 @@ end
         object: book }
     )
     puts('Book created successfully!')
-    start.menu
   end
 end
 
-  class Create_people
-
+class CreatePeople
   def initialize(everyone)
-  @everyone = everyone
+    @everyone = everyone
   end
 
-  def creating_person
+  def create_person
     print('Do you want to create a student(1) or a teacher(2)? [Input the number]:')
     selected = gets.chomp.to_i
     if selected != 1 && selected != 2
@@ -132,7 +134,6 @@ end
         object: teacher }
     )
     puts('Person created successfully!')
-    start.menu
   end
 
   def create_student
@@ -152,17 +153,18 @@ end
     @everyone.push({ display: "[Student] Name: #{name}, ID: #{student.id} Age: #{age}",
                      object: student })
     puts('Person created successfully!')
-    start.menu
   end
 end
 
-class Create_rental
-  def initialize(everyone,all_books)
+class CreateRental
+  def initialize(everyone, all_books, all_rentals, self_value)
     @everyone = everyone
     @all_books = all_books
+    @all_rentals = all_rentals
+    @self_value = self_value
   end
 
-  def creating_rental
+  def create_rental
     if @all_books.length.positive? && @everyone.length.positive?
       listing(@all_books)
       puts('Select a book from the following list')
@@ -175,7 +177,6 @@ class Create_rental
       handled_rental(selected_book, selected_person, selected_date)
     else
       puts 'No books or no persons yet!'
-      start.menu
     end
   end
 
@@ -183,17 +184,18 @@ class Create_rental
     @all_rentals.push(Rental.new(selected_date, @everyone[selected_person][:object],
                                  @all_books[selected_book][:object]))
     puts('Rental created')
-    start.menu
+    @self_value.menu
   rescue NoMethodError
     puts('You selected invalid values, try again!')
-    creating_rental
+    create_rental
   end
 end
 
-class List_rental
-  def initialize(everyone,all_books)
+class ListRental
+  def initialize(everyone, all_books, all_rentals)
     @everyone = everyone
     @all_books = all_books
+    @all_rentals = all_rentals
   end
 
   def list_rental
@@ -206,6 +208,5 @@ class List_rental
         puts("Date: #{rental.date}, Book \"#{rental.book.title}\" by #{rental.book.author}")
       end
     end
-    menu
   end
 end
