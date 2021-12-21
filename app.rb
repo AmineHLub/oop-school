@@ -1,9 +1,9 @@
-require_relative './app-dep/create-book.rb'
-require_relative './app-dep/create-people.rb'
-require_relative './app-dep/create-rental.rb'
-require_relative './app-dep/list-book.rb'
-require_relative './app-dep/list-people.rb'
-require_relative './app-dep/list-rental.rb'
+require_relative './app-dep/create_book'
+require_relative './app-dep/create_people'
+require_relative './app-dep/create_rental'
+require_relative './app-dep/list_books'
+require_relative './app-dep/list_people'
+require_relative './app-dep/list_rental'
 
 class App
   attr_accessor :everyone, :all_books, :all_rentals

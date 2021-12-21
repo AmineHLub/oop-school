@@ -1,10 +1,9 @@
-
 class CreateBook
-    def initialize(all_books)
-      @all_books = all_books
-    end
-    
-    def create_book
+  def initialize(all_books)
+    @all_books = all_books
+  end
+
+  def create_book
     print('Title: ')
     title = gets.chomp
     print('Author: ')
