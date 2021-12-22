@@ -9,7 +9,7 @@ require_relative './app-dep/exit_and_store'
 class App
   attr_accessor :everyone, :all_books, :all_rentals
 
-  def initialize(everyone = [], all_books = [], all_rentals = [])
+  def initialize(everyone, all_books, all_rentals)
     @everyone = everyone
     @all_books = all_books
     @all_rentals = all_rentals
