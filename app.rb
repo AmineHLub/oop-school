@@ -4,6 +4,7 @@ require_relative './app-dep/create_rental'
 require_relative './app-dep/list_books'
 require_relative './app-dep/list_people'
 require_relative './app-dep/list_rental'
+require_relative './app-dep/exit_and_store'
 
 class App
   attr_accessor :everyone, :all_books, :all_rentals
@@ -49,6 +50,7 @@ class App
       ListRental.new(@everyone, @all_books, @all_rentals).list_rental
       menu
     else
+      ExitAndStore.new(self).save
       puts('Thanks for using the app!')
       exit
     end
