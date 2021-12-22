@@ -1,4 +1,3 @@
-require 'pry'
 require 'json'
 class ExitAndStore
   def initialize(data)
