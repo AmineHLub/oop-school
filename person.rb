@@ -1,7 +1,7 @@
 require_relative './corrector'
 class Person
-  attr_reader :id, :rentals
-  attr_accessor :age, :name
+  attr_reader :rentals
+  attr_accessor :age, :name, :id
 
   DEFAULT_PERM = true
   def initialize(age, name = 'Unknown', parent_permission = DEFAULT_PERM)
