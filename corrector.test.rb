@@ -3,8 +3,8 @@ require_relative './corrector'
 describe Corrector do
   before :each do
     @corrector = Corrector.new
-    @name =  @corrector.correct_name('busiwa')
-    @second_name =  @corrector.correct_name('deboranjisona')
+    @name = @corrector.correct_name('busiwa')
+    @second_name = @corrector.correct_name('deboranjisona')
   end
 
   it 'shows capitalization' do
