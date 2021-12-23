@@ -5,16 +5,13 @@ require_relative './app-dep/list_books'
 require_relative './app-dep/list_people'
 require_relative './app-dep/list_rental'
 require_relative './app-dep/exit_and_store'
-
 class App
   attr_accessor :everyone, :all_books, :all_rentals
-
   def initialize(everyone, all_books, all_rentals)
     @everyone = everyone
     @all_books = all_books
     @all_rentals = all_rentals
   end
-
   def menu
     puts "Please choose an option by entering a number :\n"
     puts "1 - List all books:\n"
@@ -28,7 +25,6 @@ class App
     selected = gets.chomp.to_i
     choice(selected)
   end
-
   def choice(selected)
     case selected
     when 1
@@ -56,10 +52,8 @@ class App
     end
   end
 end
-
 def listing(array)
   array.each do |element|
-    element.transform_keys(&:to_sym)
     puts("#{array.find_index(element)}) #{element[:display]}")
   end
 end

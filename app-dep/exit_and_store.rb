@@ -19,22 +19,8 @@ class ExitAndStore
     File.open('./saved_data/all_rentals.json', 'w+') do |file|
       file.write(JSON.generate(json_rents(@all_rentals, rented)))
     end
-    binding.pry
   end
-
-  def file_creator
-    file_creator
-    data = [{ 'all_books' => @all_books }, { 'all_rentals' => @all_rentals },
-            { 'everyone' => @everyone }]
-    file_checker(data)
-  end
-
-  def file_checker(data)
-    data.each do |file|
-      File.new("./saved_data/#{file.keys[0]}.json", 'w') unless File.exist?("./saved_data/#{file.keys[0]}.json")
-    end
-  end
-
+  
   def json_rents(array, rents)
     array.each do |sub_arr|
       rents << { id: sub_arr.person.id,
@@ -55,8 +41,8 @@ class ExitAndStore
 
   def json_person(array, persons)
     array.each do |sub_arr|
-      json_student(sub_arr, persons) if sub_arr[:object].class.name == 'Student'
-      json_teacher(sub_arr, persons) if sub_arr[:object].class.name == 'Teacher'
+      json_student(sub_arr, persons) if sub_arr[:object].instance_of?(Student)
+      json_teacher(sub_arr, persons) if sub_arr[:object].instance_of?(Teacher)
     end
     persons
   end
