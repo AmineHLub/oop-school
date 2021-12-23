@@ -59,6 +59,7 @@ end
 
 def listing(array)
   array.each do |element|
+    element.transform_keys(&:to_sym)
     puts("#{array.find_index(element)}) #{element[:display]}")
   end
 end
