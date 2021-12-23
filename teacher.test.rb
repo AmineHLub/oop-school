@@ -1,8 +1,9 @@
-require_relative './t'
+require_relative './teacher'
+require_relative './person'
 
 describe Person do
   before :each do
-    @teacher = teacher.new('MD', 35, 'Mirriam', true)
+    @teacher = Teacher.new('MD', 35, 'Mirriam', true)
   end
 
   it 'shows instance of student class' do
@@ -18,6 +19,6 @@ describe Person do
   end
 
   it 'matches the specialization' do
-    expect(@student.specialization).to match 'MD'
+    expect(@teacher.specialization).to match 'MD'
   end
 end
