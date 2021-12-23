@@ -10,15 +10,9 @@ class ExitAndStore
     persons = []
     books = []
     rented = []
-    File.open('./saved_data/all_books.json', 'w+') do |file|
-      file.write(JSON.generate(json_book(@all_books, books)))
-    end
-    File.open('./saved_data/everyone.json', 'w+') do |file|
-      file.write(JSON.generate(json_person(@everyone, persons)))
-    end
-    File.open('./saved_data/all_rentals.json', 'w+') do |file|
-      file.write(JSON.generate(json_rents(@all_rentals, rented)))
-    end
+    File.write('./saved_data/all_books.json', JSON.generate(json_book(@all_books, books)))
+    File.write('./saved_data/everyone.json', JSON.generate(json_person(@everyone, persons)))
+    File.write('./saved_data/all_rentals.json', JSON.generate(json_rents(@all_rentals, rented)))
   end
 
   def json_rents(array, rents)
