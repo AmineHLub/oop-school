@@ -16,6 +16,16 @@ And all of this will be built in a beautiful and well-organized way!
 - clone git@github.com:AmineHLub/oop-school.git
 - cd oop-school
 
+## Requirements
+
+- make sure ruby is installed at at least version 2.0
+
+## Run
+
+- ./main.rb
+- **IMPORTANT**: in your main folder(oop-school) you should be getting empty saved_data folder
+if not please do create one.
+
 ## Authors
 
 👤 **Mohamed Amine Hajltaief**
@@ -23,6 +33,12 @@ And all of this will be built in a beautiful and well-organized way!
 - GitHub: [@AmineHLub](https://github.com/AmineHLub)
 - Twitter: [@Amino47612441](https://twitter.com/Amino47612441)
 - LinkedIn: [LinkedIn](https://www.linkedin.com/in/mohamed-amine-hajltaief-b18863163/)
+
+👤 **Busiwa24**
+
+- GitHub: (https://github.com/Busiwa24) 
+- Twitter: (https://twitter.com/busiwaliuma) 
+- LinkedIn: (https://www.linkedin.com/in/busiwa-liuma-)
 
 
 ## 🤝 Contributing
