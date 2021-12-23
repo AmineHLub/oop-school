@@ -1,4 +1,4 @@
-require_relative './corrector'
+require_relative '../corrector'
 
 describe Corrector do
   before :each do
