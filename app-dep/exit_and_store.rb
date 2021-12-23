@@ -20,7 +20,7 @@ class ExitAndStore
       file.write(JSON.generate(json_rents(@all_rentals, rented)))
     end
   end
-  
+
   def json_rents(array, rents)
     array.each do |sub_arr|
       rents << { id: sub_arr.person.id,

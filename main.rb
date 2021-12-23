@@ -34,7 +34,6 @@ def file_checker(data)
   end
 end
 
-
 def load_data(everyone, all_books, all_rentals)
   load_books(all_books)
   load_everyone(everyone)
@@ -92,22 +91,32 @@ end
 def load_rentals(everyone, all_books, all_rentals)
   File.open('./saved_data/all_rentals.json', 'r+') do |file|
     data = JSON.parse(file.read)
-    selected_user = ''
-    selected_book = ''
     data.each do |rental_data|
-      everyone.each do |person|
-        selected_user = person[:object] if person[:object].id == rental_data['id']
-      end
-      all_books.each do |book|
-        if book[:object].title == rental_data['title'] && book[:object].author == rental_data['author']
-          selected_book = book[:object]
-        end
-      end
-      all_rentals.push(Rental.new(rental_data['date'], selected_user, selected_book))
+      all_rentals.push(Rental.new(rental_data['date'],
+                                  person_selection(everyone, rental_data),
+                                  book_selection(all_books, rental_data)))
     end
   rescue JSON::ParserError
     all_rentals = []
   end
+end
+
+def person_selection(everyone, rental_data)
+  selected_user = ''
+  everyone.each do |person|
+    selected_user = person[:object] if person[:object].id == rental_data['id']
+  end
+  selected_user
+end
+
+def book_selection(all_books, rental_data)
+  selected_book = ''
+  all_books.each do |book|
+    if book[:object].title == rental_data['title'] && book[:object].author == rental_data['author']
+      selected_book = book[:object]
+    end
+  end
+  selected_book
 end
 
 def checker(value)
